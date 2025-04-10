@@ -42,3 +42,18 @@ if ($_SESSION['game_started'] ?? false) {
         );
     }
 }
+
+// Processa o botão Jogar Novamente
+if (isset($_POST['restart'])) {
+    // Limpa as variáveis de sessão do jogo
+    $_SESSION['game_started'] = false;
+    $_SESSION['player_name'] = '';
+    $_SESSION['correct'] = 0;
+    $_SESSION['wrong'] = 0;
+    $_SESSION['game_ended'] = false;
+    unset($_SESSION['current_question']);
+    unset($_SESSION['start_time']);
+    // Redireciona para a página inicial
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    exit;
+}

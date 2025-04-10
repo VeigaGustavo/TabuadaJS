@@ -1,15 +1,15 @@
 <?php
 // includes/config.php
-session_start();
+
+// Inicializa a sessão se ainda não estiver ativa
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 // Configurações básicas
 define('GAME_DURATION', 120); // 2 minutos em segundos
 define('MIN_NUMBER', 2);
 define('MAX_NUMBER', 9);
-
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
 
 // Inicializa todas as variáveis de sessão necessárias
 if (!isset($_SESSION['initialized'])) {

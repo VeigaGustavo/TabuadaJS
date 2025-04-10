@@ -1,9 +1,12 @@
 <!-- Arquivo: views/start_form.php -->
-<form method="post" class="start-form">
-    <h2>🎮 Bem-vindo ao Jogo de Tabuada</h2>
-    <img src="assets/img/ifto.jpg" class="university-crest">
-    <p>Digite seu nome para começar:</p>
-    <input type="text" name="player_name" placeholder="Seu nome" required>
-    <br>
-    <button type="submit" name="start_game">Começar</button>
-</form>
+<div class="start-form">
+    <img src="assets/img/ifto.jpg" alt="Logo IFTO" class="ifto-logo">
+    <h2>Jogo da Tabuada</h2>
+    <form method="post">
+        <input type="text" name="player_name" placeholder="Digite seu nome" required>
+        <button type="submit" name="start_game">Começar</button>
+    </form>
+    <div class="credits">
+        Desenvolvido por <a href="https://github.com/gustavoantunes7" target="_blank">Gustavo Antunes</a>
+    </div>
+</div>

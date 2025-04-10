@@ -1,19 +1,49 @@
+// Constante para a duração do jogo em segundos
+const GAME_DURATION = 120; // 2 minutos
+
 function startGame(startTime) {
-    const timerElement = document.getElementById('timer');  // Pega o elemento onde o tempo será exibido
-
-    function updateTimer() {
-        const currentTime = Math.floor(Date.now() / 1000);  // Pega o tempo atual em segundos
-        const elapsed = currentTime - startTime;  // Calcula o tempo decorrido
-        const minutes = String(Math.floor(elapsed / 60)).padStart(2, '0');
-        const seconds = String(elapsed % 60).padStart(2, '0');
-        timerElement.textContent = `${minutes}:${seconds}`;  // Exibe o tempo
-
-        if (elapsed >= 120) {
-            document.getElementById('game-form').submit();  // Envia o formulário após 2 minutos
-        } else {
-            setTimeout(updateTimer, 1000);  // Atualiza o tempo a cada segundo
-        }
+    const timerElement = document.getElementById('timer');
+    
+    if (!timerElement) {
+        console.error('Elemento timer não encontrado!');
+        return;
     }
 
-    updateTimer();  // Inicia a contagem assim que o jogo começar
+    let isGameRunning = true;
+
+    function formatTime(timeInSeconds) {
+        const minutes = String(Math.floor(timeInSeconds / 60)).padStart(2, '0');
+        const seconds = String(timeInSeconds % 60).padStart(2, '0');
+        return `${minutes}:${seconds}`;
+    }
+
+    function updateTimer() {
+        if (!isGameRunning) return;
+
+        const currentTime = Math.floor(Date.now() / 1000);
+        const elapsed = currentTime - startTime;
+        const timeLeft = Math.max(0, GAME_DURATION - elapsed);
+        
+        timerElement.textContent = formatTime(timeLeft);
+
+        if (timeLeft <= 0) {
+            isGameRunning = false;
+            const gameForm = document.getElementById('game-form');
+            if (gameForm) {
+                gameForm.submit();
+            } else {
+                console.error('Formulário do jogo não encontrado!');
+            }
+            return;
+        }
+
+        // Agenda a próxima atualização
+        setTimeout(updateTimer, 1000);
+    }
+
+    // Inicia a contagem regressiva imediatamente
+    updateTimer();
 }
+
+// Expõe a função startGame globalmente
+window.startGame = startGame;

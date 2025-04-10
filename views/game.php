@@ -1,30 +1,32 @@
 <!-- Arquivo: views/game.php -->
-<div class="header">
-    <div><strong><?= $_SESSION['player_name'] ?></strong></div>
-    <div class="timer" id="timer"><?= gmdate("i:s", $elapsed_time) ?></div>
+<div class="game">
+    <img src="assets/img/ifto.jpg" alt="Logo IFTO" class="ifto-logo">
+    
+    <div class="stats">
+        <span>Jogador: <?= htmlspecialchars($_SESSION['player_name']) ?></span>
+        <span class="correct">✅ Acertos: <?= $_SESSION['correct'] ?></span>
+        <span class="wrong">❌ Erros: <?= $_SESSION['wrong'] ?></span>
+    </div>
+
+    <div id="timer" class="timer">02:00</div>
+
+    <div class="question">
+        <?= $_SESSION['current_question']['a'] ?> × <?= $_SESSION['current_question']['b'] ?> = ?
+    </div>
+
+    <form method="post" id="game-form">
+        <input type="number" name="answer" class="answer-input" required autofocus>
+        <button type="submit">Responder</button>
+    </form>
+
+    <div class="credits">
+        Desenvolvido por <a href="https://github.com/gustavoantunes7" target="_blank">Gustavo Antunes</a>
+    </div>
 </div>
 
-<div class="stats">
-    <div class="correct">✅ <?= $_SESSION['correct'] ?> acertos</div>
-    <div class="wrong">❌ <?= $_SESSION['wrong'] ?> erros</div>
-</div>
-
-<div class="question">
-    Quanto é <?= $_SESSION['current_question']['a'] ?> × <?= $_SESSION['current_question']['b'] ?>?
-</div>
-
-<form method="post" id="game-form">
-    <input type="number" name="answer" placeholder="Digite sua resposta" required autofocus>
-    <button type="submit">Responder</button>
-</form>
-
-<!-- Dentro da view onde o jogo é mostrado -->
 <script>
-    // Passa a variável PHP 'start_time' para o JavaScript
-    const startTime = <?php echo $_SESSION['start_time']; ?>;
-
-    // Chama o arquivo JS para manipular o tempo
-    window.onload = function() {
-        startGame(startTime);
-    }
+document.addEventListener('DOMContentLoaded', function() {
+    const startTime = <?= $_SESSION['start_time'] ?? 'Math.floor(Date.now() / 1000)' ?>;
+    window.startGame(startTime);
+});
 </script>
