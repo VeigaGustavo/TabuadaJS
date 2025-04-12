@@ -1,20 +1,52 @@
-# Jogo de Tabuada
+# Jogo da Tabuada
 
-Este é um jogo de tabuada simples, desenvolvido utilizando **PHP**, **JavaScript**, **HTML** e **CSS**. O objetivo do jogo é testar seus conhecimentos em tabuada, com um tempo limite de 2 minutos para responder a cada questão.
+Um jogo educativo para praticar a tabuada, desenvolvido em PHP.
 
-## Funcionalidades:
-- Perguntas de tabuada geradas aleatoriamente.
-- Temporizador de 2 minutos.
-- Feedback imediato sobre a resposta (acerto ou erro).
-- Placar com número de acertos e erros.
-- Histórico de pontuação.
+## Características
 
-## Tecnologias Usadas:
-- **PHP**: para gerenciamento de sessões e lógica de backend.
-- **JavaScript**: para controle do temporizador e interação do frontend.
-- **HTML/CSS**: para estruturação e estilização da interface.
+- Interface amigável e responsiva
+- Temporizador para desafio
+- Sistema de pontuação
+- Diferentes níveis de dificuldade
+- Design moderno com logo do IFTO
 
-## Como Rodar o Jogo:
-1. Clone este repositório para sua máquina:
-   ```bash
-   git clone https://github.com/veigagustavo/jogo-tabuada.git
+## Requisitos
+
+- PHP 7.4 ou superior
+- Servidor web (Apache/Nginx)
+- Navegador moderno
+
+## Instalação
+
+1. Clone o repositório:
+```bash
+git clone https://github.com/VeigaGustavo/tabuada.git
+```
+
+2. Configure o servidor web:
+   - Certifique-se que o módulo de reescrita (mod_rewrite) está ativado
+   - Configure as permissões corretas para os arquivos
+
+3. Acesse o jogo:
+   - Abra o navegador
+   - Acesse: http://seu-servidor/tabuada
+
+## Estrutura do Projeto
+
+```
+tabuada/
+├── assets/         # Arquivos estáticos (CSS, JS, imagens)
+├── includes/       # Arquivos PHP incluídos
+├── process/        # Lógica do jogo
+├── views/          # Templates
+├── .htaccess       # Configurações do Apache
+└── index.php       # Arquivo principal
+```
+
+## Contribuição
+
+Sinta-se à vontade para contribuir com o projeto! Abra uma issue ou envie um pull request.
+
+## Licença
+
+Este projeto está sob a licença MIT.
