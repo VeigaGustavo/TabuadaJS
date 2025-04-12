@@ -29,7 +29,7 @@ git clone https://github.com/VeigaGustavo/tabuada.git
 
 3. Acesse o jogo:
    - Abra o navegador
-   - Acesse: http://seu-servidor/tabuada
+   - Acesse: https://41dbaa4e-d9b9-4e53-82c1-069b696de51b-00-23onaf4zinxit.kirk.replit.dev/
 
 ## Estrutura do Projeto
 
