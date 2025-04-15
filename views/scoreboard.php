@@ -38,6 +38,6 @@ session_start();
     </form>
 
     <div class="credits">
-        Desenvolvido por <a href="https://github.com/gustavoantunes7" target="_blank">Gustavo Antunes</a>
+        Desenvolvido por <a href="https://github.com/VeigaGustavo" target="_blank">Gustavo Antunes</a>
     </div>
 </div>
