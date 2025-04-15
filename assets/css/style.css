@@ -108,32 +108,79 @@ form {
     border: 2px solid #ddd;
     border-radius: 5px;
 }
-@media (max-width: 480px) {
+@media (max-width: 768px) {
     .game-container {
-        padding: 1rem;
+        padding: 0.5rem;
+        max-width: 98vw;
     }
     .question {
-        font-size: 2rem;
+        font-size: 1.5rem;
+        margin: 1rem 0;
     }
     .timer {
-        font-size: 1.5rem;
-    }
-    .scoreboard table, .scoreboard th, .scoreboard td {
-        font-size: 0.85rem;
-        padding: 4px;
-    }
-    .ifto-logo {
-        max-width: 100px;
+        font-size: 1.2rem;
     }
     .stats {
         flex-direction: column;
-        gap: 4px;
+        gap: 2px;
         font-size: 1rem;
+        margin-bottom: 10px;
+    }
+    .scoreboard {
+        margin-top: 1rem;
+    }
+    .scoreboard table, .scoreboard th, .scoreboard td {
+        font-size: 0.8rem;
+        padding: 2px;
+    }
+    .ifto-logo {
+        max-width: 80px;
+        margin-bottom: 1rem;
+    }
+    .answer-input {
+        font-size: 1.1rem;
+        width: 100px;
+        padding: 6px;
+    }
+    button {
+        font-size: 0.95rem;
+        padding: 8px 12px;
     }
     .credits {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
+        margin-top: 1rem;
+        padding-top: 0.5rem;
     }
 }
+
+@media (max-width: 400px) {
+    .game-container {
+        padding: 0.2rem;
+    }
+    .question {
+        font-size: 1.1rem;
+    }
+    .timer {
+        font-size: 1rem;
+    }
+    .scoreboard th, .scoreboard td {
+        font-size: 0.7rem;
+        padding: 1px;
+    }
+    .ifto-logo {
+        max-width: 60px;
+    }
+    .answer-input {
+        font-size: 0.9rem;
+        width: 70px;
+        padding: 4px;
+    }
+    button {
+        font-size: 0.85rem;
+        padding: 6px 8px;
+    }
+}
+
 .ifto-logo {
     display: block;
     margin: 0 auto 1.5rem;
