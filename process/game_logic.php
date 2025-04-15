@@ -25,8 +25,15 @@ if ($_SESSION['game_started'] ?? false) {
         if (isset($_SESSION['current_question']['correct_answer']) && 
             $answer === $_SESSION['current_question']['correct_answer']) {
             $_SESSION['correct']++;
+            unset($_SESSION['last_wrong']); // Limpa mensagem anterior
         } else {
             $_SESSION['wrong']++;
+            // Salva cálculo anterior para exibir mensagem de erro
+            $_SESSION['last_wrong'] = [
+                'a' => $_SESSION['current_question']['a'],
+                'b' => $_SESSION['current_question']['b'],
+                'resposta' => $_SESSION['current_question']['correct_answer']
+            ];
         }
         $_SESSION['current_question'] = generateQuestion();
     }

@@ -19,6 +19,12 @@
         <button type="submit">Responder</button>
     </form>
 
+    <?php if (isset($_SESSION['last_wrong'])): ?>
+        <div class="wrong-message" style="color: #dc3545; margin-top: 10px; font-size: 1.1rem;">
+            Cálculo anterior: <?= $_SESSION['last_wrong']['a'] ?> × <?= $_SESSION['last_wrong']['b'] ?> = <?= $_SESSION['last_wrong']['resposta'] ?>
+        </div>
+    <?php endif; ?>
+
     <div class="credits">
         Desenvolvido por <a href="https://github.com/gustavoantunes7" target="_blank">Gustavo Antunes</a>
     </div>
