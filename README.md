@@ -8,7 +8,7 @@ Um jogo educativo para praticar a tabuada, desenvolvido em JavaScript.
 - Temporizador para desafio
 - Sistema de pontuação
 - Diferentes níveis de dificuldade
-- Design moderno com logo do IFTO
+- Design moderno com logo do meu site
 
 ## Requisitos
 
@@ -40,7 +40,3 @@ O projeto foi convertido de PHP para JavaScript para facilitar o acesso e compar
 ## Contribuição
 
 Sinta-se à vontade para contribuir com o projeto! Abra uma issue ou envie um pull request.
-
-## Licença
-
-Este projeto está sob a licença MIT.
