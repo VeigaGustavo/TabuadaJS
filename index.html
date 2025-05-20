@@ -9,7 +9,10 @@
 </head>
 <body>
     <div class="container">
-        <img src="assets/img/favicon.png" alt="Logo VG" class="veiga-logo">
+        <div class="logo-timer-row" id="logoTimerRow">
+            <img src="assets/img/favicon.png" alt="Logo VG" class="veiga-logo">
+            <span class="timer main-timer" id="timer" style="display:none">01:00</span>
+        </div>
         <div id="startForm">
             <input type="text" id="playerName" placeholder="Digite seu nome" required autocomplete="off">
             <button onclick="startGame()">Começar</button>
@@ -26,10 +29,10 @@
                     <span class="wrong" id="wrongCount">0</span>
                 </div>
             </div>
+            <div id="scoreboardArea"></div>
             <button onclick="restartGame()">Jogar Novamente</button>
         </div>
         <div id="gamePlay" style="display: none;">
-            <div class="timer" id="timer">01:00</div>
             <div class="question" id="question"></div>
             <form id="answerForm" autocomplete="off">
                 <input type="number" id="answer" required autocomplete="off" placeholder="Sua resposta">
@@ -47,7 +50,7 @@
             </div>
         </div>
         <div class="credits">
-            Desenvolvido por <a href="https://github.com/VeigaGustavo" target="_blank">Gustavo Antunes</a>
+            Desenvolvido por <a href="https://www.veigagustavo.com.br/" target="_blank">Gustavo Antunes</a>
         </div>
     </div>
     <script src="assets/js/script.js"></script>
