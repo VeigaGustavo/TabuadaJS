@@ -4,103 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabuada</title>
-    <style>
-        body { font-family: Arial; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f0f2f5; }
-        .container { background: white; padding: 20px; border-radius: 10px; text-align: center; }
-        input, button { padding: 10px; margin: 5px; }
-        .timer { font-size: 24px; }
-        .question { font-size: 32px; margin: 20px; }
-        .stats { margin: 10px; }
-        .correct { color: green; }
-        .wrong { color: red; }
-    </style>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="icon" type="image/png" href="assets/img/veiga-logo.png">
 </head>
 <body>
     <div class="container">
+        <img src="assets/img/favicon.png" alt="Logo VG" class="veiga-logo">
         <div id="startForm">
-            <input type="text" id="playerName" placeholder="Nome" required>
+            <input type="text" id="playerName" placeholder="Digite seu nome" required autocomplete="off">
             <button onclick="startGame()">Começar</button>
         </div>
         <div id="gameOver" style="display: none;">
             <h1>Fim!</h1>
-            <div class="stats">
-                <p>Acertos: <span class="correct" id="correctCount">0</span></p>
-                <p>Erros: <span class="wrong" id="wrongCount">0</span></p>
+            <div class="stats stat-group">
+                <div class="stat-row">
+                    <span class="icon" id="icon-correct"></span>
+                    <span class="correct" id="correctCount">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="icon" id="icon-wrong"></span>
+                    <span class="wrong" id="wrongCount">0</span>
+                </div>
             </div>
             <button onclick="restartGame()">Jogar Novamente</button>
         </div>
         <div id="gamePlay" style="display: none;">
-            <div class="timer" id="timer">60s</div>
+            <div class="timer" id="timer">01:00</div>
             <div class="question" id="question"></div>
-            <input type="number" id="answer" required autofocus>
-            <button onclick="submitAnswer()">Responder</button>
-            <div class="stats">
-                <p>Acertos: <span class="correct" id="correctCount">0</span></p>
-                <p>Erros: <span class="wrong" id="wrongCount">0</span></p>
+            <form id="answerForm" autocomplete="off">
+                <input type="number" id="answer" required autocomplete="off" placeholder="Sua resposta">
+                <button type="submit">Responder</button>
+            </form>
+            <div class="stats stat-group">
+                <div class="stat-row">
+                    <span class="icon" id="icon-correct-play"></span>
+                    <span class="correct" id="correctCountPlay">0</span>
+                </div>
+                <div class="stat-row">
+                    <span class="icon" id="icon-wrong-play"></span>
+                    <span class="wrong" id="wrongCountPlay">0</span>
+                </div>
             </div>
         </div>
+        <div class="credits">
+            Desenvolvido por <a href="https://github.com/VeigaGustavo" target="_blank">Gustavo Antunes</a>
+        </div>
     </div>
-    <script>
-        const GAME_DURATION = 60;
-        let gameInterval;
-        let startTime;
-        let correct = 0;
-        let wrong = 0;
-        let a, b;
-
-        function generateQuestion() {
-            a = Math.floor(Math.random() * 10) + 1;
-            b = Math.floor(Math.random() * 10) + 1;
-            document.getElementById('question').innerText = `${a} × ${b} = ?`;
-        }
-
-        function startGame() {
-            const playerName = document.getElementById('playerName').value;
-            if (!playerName) return;
-            localStorage.setItem('playerName', playerName);
-            document.getElementById('startForm').style.display = 'none';
-            document.getElementById('gamePlay').style.display = 'block';
-            startTime = Date.now();
-            gameInterval = setInterval(updateTimer, 1000);
-            generateQuestion();
-        }
-
-        function updateTimer() {
-            const elapsed = Math.floor((Date.now() - startTime) / 1000);
-            const remaining = GAME_DURATION - elapsed;
-            document.getElementById('timer').innerText = `${remaining}s`;
-            if (remaining <= 0) {
-                clearInterval(gameInterval);
-                endGame();
-            }
-        }
-
-        function submitAnswer() {
-            const answer = parseInt(document.getElementById('answer').value);
-            if (answer === a * b) {
-                correct++;
-            } else {
-                wrong++;
-            }
-            document.getElementById('correctCount').innerText = correct;
-            document.getElementById('wrongCount').innerText = wrong;
-            generateQuestion();
-            document.getElementById('answer').value = '';
-        }
-
-        function endGame() {
-            document.getElementById('gamePlay').style.display = 'none';
-            document.getElementById('gameOver').style.display = 'block';
-        }
-
-        function restartGame() {
-            correct = 0;
-            wrong = 0;
-            document.getElementById('correctCount').innerText = '0';
-            document.getElementById('wrongCount').innerText = '0';
-            document.getElementById('gameOver').style.display = 'none';
-            document.getElementById('startForm').style.display = 'block';
-        }
-    </script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
