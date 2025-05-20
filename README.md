@@ -1,6 +1,6 @@
 # Jogo da Tabuada
 
-Um jogo educativo para praticar a tabuada, desenvolvido em PHP.
+Um jogo educativo para praticar a tabuada, desenvolvido em JavaScript.
 
 ## Características
 
@@ -12,8 +12,6 @@ Um jogo educativo para praticar a tabuada, desenvolvido em PHP.
 
 ## Requisitos
 
-- PHP 7.4 ou superior
-- Servidor web (Apache/Nginx)
 - Navegador moderno
 
 ## Instalação
@@ -23,25 +21,21 @@ Um jogo educativo para praticar a tabuada, desenvolvido em PHP.
 git clone https://github.com/VeigaGustavo/tabuada.git
 ```
 
-2. Configure o servidor web:
-   - Certifique-se que o módulo de reescrita (mod_rewrite) está ativado
-   - Configure as permissões corretas para os arquivos
-
-3. Acesse o jogo:
-   - Abra o navegador
-   - Acesse: https://41dbaa4e-d9b9-4e53-82c1-069b696de51b-00-23onaf4zinxit.kirk.replit.dev/
+2. Acesse o jogo:
+   - Abra o arquivo `index.html` em seu navegador
 
 ## Estrutura do Projeto
 
 ```
 tabuada/
 ├── assets/         # Arquivos estáticos (CSS, JS, imagens)
-├── includes/       # Arquivos PHP incluídos
-├── process/        # Lógica do jogo
 ├── views/          # Templates
-├── .htaccess       # Configurações do Apache
-└── index.php       # Arquivo principal
+└── index.html      # Arquivo principal
 ```
+
+## Motivo da Conversão para JavaScript
+
+O projeto foi convertido de PHP para JavaScript para facilitar o acesso e compartilhamento. Com JavaScript, o jogo pode ser executado diretamente no navegador, sem a necessidade de um servidor web, tornando-o mais acessível e fácil de distribuir.
 
 ## Contribuição
 

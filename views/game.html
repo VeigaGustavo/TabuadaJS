@@ -1,0 +1,90 @@
+<!-- Arquivo: views/game.html -->
+<div class="game">
+    <img src="assets/img/ifto.jpg" alt="Logo IFTO" class="ifto-logo">
+    
+    <div class="stats">
+        <span>Jogador: <span id="playerName"></span></span>
+        <span class="correct">✅ Acertos: <span id="correctCount">0</span></span>
+        <span class="wrong">❌ Erros: <span id="wrongCount">0</span></span>
+    </div>
+
+    <div id="timer" class="timer">02:00</div>
+
+    <div class="question" id="question"></div>
+
+    <form id="game-form">
+        <input type="number" id="answer" class="answer-input" required autofocus>
+        <button type="submit">Responder</button>
+    </form>
+
+    <div id="wrongMessage" class="wrong-message" style="display: none; color: #dc3545; margin-top: 10px; font-size: 1.1rem;"></div>
+
+    <div class="credits">
+        Desenvolvido por <a href="https://github.com/VeigaGustavo" target="_blank">Gustavo Antunes</a>
+    </div>
+</div>
+<script>
+    let startTime;
+    let gameInterval;
+    let correct = 0;
+    let wrong = 0;
+    let a, b;
+
+    function generateQuestion() {
+        a = Math.floor(Math.random() * 10) + 1;
+        b = Math.floor(Math.random() * 10) + 1;
+        document.getElementById('question').innerText = `${a} × ${b} = ?`;
+    }
+
+    function startGame() {
+        const playerName = localStorage.getItem('playerName');
+        document.getElementById('playerName').innerText = playerName;
+        startTime = Date.now();
+        gameInterval = setInterval(updateTimer, 1000);
+        generateQuestion();
+    }
+
+    function updateTimer() {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        const remaining = 120 - elapsed; // 2 minutes
+        document.getElementById('timer').innerText = `${Math.floor(remaining / 60)}:${remaining % 60 < 10 ? '0' : ''}${remaining % 60}`;
+        if (remaining <= 0) {
+            clearInterval(gameInterval);
+            endGame();
+        }
+    }
+
+    function submitAnswer() {
+        const answer = parseInt(document.getElementById('answer').value);
+        if (answer === a * b) {
+            correct++;
+        } else {
+            wrong++;
+            document.getElementById('wrongMessage').innerText = `Cálculo anterior: ${a} × ${b} = ${a * b}`;
+            document.getElementById('wrongMessage').style.display = 'block';
+        }
+        document.getElementById('correctCount').innerText = correct;
+        document.getElementById('wrongCount').innerText = wrong;
+        generateQuestion();
+        document.getElementById('answer').value = '';
+    }
+
+    function endGame() {
+        const scoreboard = JSON.parse(localStorage.getItem('scoreboard')) || [];
+        scoreboard.push({
+            name: localStorage.getItem('playerName'),
+            correct: correct,
+            wrong: wrong,
+            time: '2:00'
+        });
+        localStorage.setItem('scoreboard', JSON.stringify(scoreboard));
+        window.location.href = 'scoreboard.html';
+    }
+
+    document.getElementById('game-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        submitAnswer();
+    });
+
+    startGame();
+</script>
