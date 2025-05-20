@@ -9,6 +9,14 @@ Um jogo educativo moderno para praticar a tabuada, desenvolvido em JavaScript pu
 - Coroa para o campeão (maior pontuação)
 - Perguntas apenas de 2 a 9 (sem tabuada de 1 e 10)
 - Fácil de compartilhar: basta abrir o `index.html` no navegador
+- Interface amigável e responsiva
+- Temporizador para desafio
+- Sistema de pontuação
+- Diferentes níveis de dificuldade
+- Design moderno com logo do meu site
+
+## Requisitos
+- Navegador moderno
 
 ## Como usar
 1. Clone o repositório:
@@ -30,6 +38,12 @@ TabuadaJS/
 
 ## Sobre
 Desenvolvido por [Gustavo Antunes](https://www.veigagustavo.com.br/)
+
+## Motivo da Conversão para JavaScript
+O projeto foi convertido de PHP para JavaScript para facilitar o acesso e compartilhamento. Com JavaScript, o jogo pode ser executado diretamente no navegador, sem a necessidade de um servidor web, tornando-o mais acessível e fácil de distribuir.
+
+## Contribuição
+Sinta-se à vontade para contribuir com o projeto! Abra uma issue ou envie um pull request.
 
 ## Licença
 MIT
